@@ -11513,3 +11513,770 @@ Processing by ThemesController#index as HTML
 Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/themes" for 127.0.0.1 at 2018-09-04 13:20:40 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ThemesController#index as HTML
+  Rendering themes/index.html.erb within layouts/application
+  [1m[36mTheme Load (0.5ms)[0m  [1m[34mSELECT "themes".* FROM "themes"[0m
+  ↳ app/views/themes/index.html.erb:4
+  Rendered themes/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 892ms (Views: 885.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/themes/1" for 127.0.0.1 at 2018-09-04 13:20:43 +0200
+Processing by ThemesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTheme Load (2.5ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/themes_controller.rb:7
+  Rendering themes/show.html.erb within layouts/application
+  [1m[36mQuestion Load (1.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1 ORDER BY "questions"."id" ASC LIMIT $2[0m  [["theme_id", 1], ["LIMIT", 1]]
+  ↳ app/views/themes/show.html.erb:4
+  Rendered themes/show.html.erb within layouts/application (87.5ms)
+Completed 200 OK in 132ms (Views: 102.3ms | ActiveRecord: 15.2ms)
+
+
+Started GET "/questions/1?theme_id=1" for 127.0.0.1 at 2018-09-04 13:20:44 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"theme_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:6
+  Rendering questions/show.html.erb within layouts/application
+  [1m[36mReponse Load (0.4ms)[0m  [1m[34mSELECT "reponses".* FROM "reponses" INNER JOIN "q_to_as" ON "reponses"."id" = "q_to_as"."reponse_id" WHERE "q_to_as"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/views/questions/show.html.erb:5
+  Rendered questions/show.html.erb within layouts/application (33.0ms)
+Completed 200 OK in 55ms (Views: 46.1ms | ActiveRecord: 5.4ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2018-09-04 13:20:46 +0200
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9LIwYfbkqPquHFI7XgBlrStFj+OUJ6JcD7ELxVxlyEXroLPXjobIY41qX9SoodSov0MziEc4mIk/oYw0RmAO+g==", "question_id"=>"1", "theme_id"=>"1", "reponse"=>"1"}
+  [1m[36mTheme Load (0.4ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:14
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["theme_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:18
+Redirected to http://localhost:3000/questions/2?theme_id=1
+Completed 302 Found in 8ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/questions/2?theme_id=1" for 127.0.0.1 at 2018-09-04 13:20:46 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"theme_id"=>"1", "id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:6
+  Rendering questions/show.html.erb within layouts/application
+  [1m[36mReponse Load (0.6ms)[0m  [1m[34mSELECT "reponses".* FROM "reponses" INNER JOIN "q_to_as" ON "reponses"."id" = "q_to_as"."reponse_id" WHERE "q_to_as"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/views/questions/show.html.erb:5
+  Rendered questions/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 24ms (Views: 21.4ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2018-09-04 13:20:47 +0200
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6y7yNxEMQ0faLG9IQBKVPjH1VNgvx4pvR/ocy7woaWL0PHGBaW4j3vlaYqe2syQ7pfPos/zYsLp36ps6pi2v3Q==", "question_id"=>"2", "theme_id"=>"1", "reponse"=>"4"}
+  [1m[36mTheme Load (0.3ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:14
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["theme_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:18
+Redirected to http://localhost:3000/themes/1/answer
+Completed 302 Found in 6ms (ActiveRecord: 1.4ms)
+
+
+Started GET "/themes/1/answer" for 127.0.0.1 at 2018-09-04 13:20:47 +0200
+Processing by ThemesController#answer as HTML
+  Parameters: {"theme_id"=>"1"}
+  [1m[36mTheme Load (0.4ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/themes_controller.rb:26
+  Rendering themes/answer.html.erb within layouts/application
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1[0m  [["theme_id", 1]]
+  ↳ app/views/themes/answer.html.erb:3
+  [1m[36mReponse Load (0.4ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  [1m[36mReponse Load (0.3ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  Rendered themes/answer.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 24ms (Views: 21.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 13:46:24 +0200
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+UserMailer#welcome: processed outbound mail in 2.1ms
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `value' for "sylvaindelva@hotmail.fr":String):
+  
+app/mailers/user_mailer.rb:10:in `welcome'
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 13:46:54 +0200
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 13:47:05 +0200
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 13:47:05 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.4ms)
+UserMailer#welcome: processed outbound mail in 766.4ms
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (3.3ms)
+Completed 200 OK in 779ms (Views: 5.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 13:47:05 +0200
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 13:47:05 +0200
+Processing by Rails::MailersController#preview as HTML
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.3ms)
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+UserMailer#welcome: processed outbound mail in 9.8ms
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.1ms)
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+Processing by Rails::MailersController#preview as HTML
+UserMailer#welcome: processed outbound mail in 13.8ms
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (1.5ms)
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+Completed 200 OK in 30ms (Views: 10.8ms | ActiveRecord: 0.0ms)
+
+
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (0.5ms)
+Completed 200 OK in 35ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.0ms)
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+UserMailer#welcome: processed outbound mail in 12.3ms
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.0ms)
+UserMailer#welcome: processed outbound mail in 7.0ms
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (0.5ms)
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (0.4ms)
+Completed 200 OK in 17ms (Views: 3.6ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 10ms (Views: 2.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fhtml" for 127.0.0.1 at 2018-09-04 13:47:06 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.4ms)
+UserMailer#welcome: processed outbound mail in 6.9ms
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 10ms (Views: 2.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 13:55:02 +0200
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.4ms)
+UserMailer#welcome: processed outbound mail in 29.4ms
+Sent mail to sylvaindelva@hotmail.fr (6.0ms)
+Date: Tue, 04 Sep 2018 13:55:02 +0200
+From: delvasylvain@hotmail.fr
+To: sylvaindelva@hotmail.fr
+Message-ID: <5b8e729687c6f_260e2ad4ec263130428ca@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (1.7ms)
+Completed 200 OK in 46ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fhtml" for 127.0.0.1 at 2018-09-04 13:55:02 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.4ms)
+UserMailer#welcome: processed outbound mail in 6.8ms
+Sent mail to sylvaindelva@hotmail.fr (1.6ms)
+Date: Tue, 04 Sep 2018 13:55:02 +0200
+From: delvasylvain@hotmail.fr
+To: sylvaindelva@hotmail.fr
+Message-ID: <5b8e72969a6bf_260e2ad4ec263130429a@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 11ms (Views: 0.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/themes/1" for 127.0.0.1 at 2018-09-04 13:58:57 +0200
+Processing by ThemesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTheme Load (0.5ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/themes_controller.rb:7
+  Rendering themes/show.html.erb within layouts/application
+  [1m[36mQuestion Load (0.7ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1 ORDER BY "questions"."id" ASC LIMIT $2[0m  [["theme_id", 1], ["LIMIT", 1]]
+  ↳ app/views/themes/show.html.erb:4
+  Rendered themes/show.html.erb within layouts/application (28.0ms)
+Started GET "/questions/1?theme_id=1" for 127.0.0.1 at 2018-09-04 13:58:58 +0200
+Completed 200 OK in 805ms (Views: 755.9ms | ActiveRecord: 15.7ms)
+
+
+Processing by QuestionsController#show as HTML
+  Parameters: {"theme_id"=>"1", "id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:6
+  Rendering questions/show.html.erb within layouts/application
+  [1m[36mReponse Load (0.8ms)[0m  [1m[34mSELECT "reponses".* FROM "reponses" INNER JOIN "q_to_as" ON "reponses"."id" = "q_to_as"."reponse_id" WHERE "q_to_as"."question_id" = $1[0m  [["question_id", 1]]
+  ↳ app/views/questions/show.html.erb:5
+  Rendered questions/show.html.erb within layouts/application (19.1ms)
+Completed 200 OK in 34ms (Views: 24.8ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2018-09-04 13:58:59 +0200
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xKj4amCPL2oVBrQEkW5UbiRFpDRWIIZWxhY1nND5cRHbunvcGO1P8zZwuetnz+VrsEMYX4U/vIP2BrJtyvy3rg==", "question_id"=>"1", "theme_id"=>"1", "reponse"=>"1"}
+  [1m[36mTheme Load (0.4ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:14
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[36mQuestion Load (0.8ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["theme_id", 1], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:18
+Redirected to http://localhost:3000/questions/2?theme_id=1
+Completed 302 Found in 10ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/questions/2?theme_id=1" for 127.0.0.1 at 2018-09-04 13:58:59 +0200
+Processing by QuestionsController#show as HTML
+  Parameters: {"theme_id"=>"1", "id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:6
+  Rendering questions/show.html.erb within layouts/application
+  [1m[36mReponse Load (0.4ms)[0m  [1m[34mSELECT "reponses".* FROM "reponses" INNER JOIN "q_to_as" ON "reponses"."id" = "q_to_as"."reponse_id" WHERE "q_to_as"."question_id" = $1[0m  [["question_id", 2]]
+  ↳ app/views/questions/show.html.erb:5
+  Rendered questions/show.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/questions" for 127.0.0.1 at 2018-09-04 13:59:00 +0200
+Processing by QuestionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BFMK98ZaC3h1drnyPkrr0DiEExKVuqqEUBz4xCjWvN0bQYlBvjhr4VYAtB3I61rVrIKveUalkFFgDH81MtN6Yg==", "question_id"=>"2", "theme_id"=>"1", "reponse"=>"4"}
+  [1m[36mTheme Load (0.3ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:14
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" WHERE "questions"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:15
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/questions_controller.rb:17
+  [1m[36mQuestion Load (0.5ms)[0m  [1m[34mSELECT  "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1 AND "questions"."id" = $2 LIMIT $3[0m  [["theme_id", 1], ["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/questions_controller.rb:18
+Redirected to http://localhost:3000/themes/1/answer
+Completed 302 Found in 6ms (ActiveRecord: 1.2ms)
+
+
+Started GET "/themes/1/answer" for 127.0.0.1 at 2018-09-04 13:59:00 +0200
+Processing by ThemesController#answer as HTML
+  Parameters: {"theme_id"=>"1"}
+  [1m[36mTheme Load (0.3ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/themes_controller.rb:26
+  Rendering themes/answer.html.erb within layouts/application
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1[0m  [["theme_id", 1]]
+  ↳ app/views/themes/answer.html.erb:3
+  [1m[36mReponse Load (0.2ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  [1m[36mReponse Load (0.2ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  Rendered themes/answer.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 13:59:08 +0200
+Processing by ThemesController#mail as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JcjeMDWhCtleYahWXYX1hefGMRfvwO/AQFg76ABOEu062l2GTcNqQH0XpbmrJESAc8CNfDzf1RVwSLwZGkvUUg==", "first_name"=>"test", "last_name"=>"Delva", "email"=>"sylvaindelva@hotmail.fr", "commit"=>"Save", "theme_id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/themes_controller.rb:30:in `mail'
+Started GET "/themes/1/answer" for 127.0.0.1 at 2018-09-04 13:59:23 +0200
+Processing by ThemesController#answer as HTML
+  Parameters: {"theme_id"=>"1"}
+  [1m[36mTheme Load (0.3ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/themes_controller.rb:26
+  Rendering themes/answer.html.erb within layouts/application
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1[0m  [["theme_id", 1]]
+  ↳ app/views/themes/answer.html.erb:3
+  [1m[36mReponse Load (0.3ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  [1m[36mReponse Load (0.3ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  Rendered themes/answer.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 65ms (Views: 40.6ms | ActiveRecord: 11.3ms)
+
+
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 13:59:29 +0200
+Processing by ThemesController#mail as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dc0Dda2/XSUOOwt2D6SZtCYbQY8vuXLsRyQ6hrqUpJ1q34DD1d09vC1NBpn5BSixsh395PymSDl3NL13oJFiIg==", "first_name"=>"test", "last_name"=>"Delva", "email"=>"sylvaindelva@hotmail.fr", "commit"=>"Save", "theme_id"=>"1"}
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (missing keyword: email):
+  
+app/controllers/themes_controller.rb:30:in `mail'
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 14:00:55 +0200
+Processing by ThemesController#mail as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dc0Dda2/XSUOOwt2D6SZtCYbQY8vuXLsRyQ6hrqUpJ1q34DD1d09vC1NBpn5BSixsh395PymSDl3NL13oJFiIg==", "first_name"=>"test", "last_name"=>"Delva", "email"=>"sylvaindelva@hotmail.fr", "commit"=>"Save", "theme_id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/themes_controller.rb:30:in `mail'
+Started GET "/themes/1/answer" for 127.0.0.1 at 2018-09-04 14:00:58 +0200
+Processing by ThemesController#answer as HTML
+  Parameters: {"theme_id"=>"1"}
+  [1m[36mTheme Load (0.4ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/themes_controller.rb:26
+  Rendering themes/answer.html.erb within layouts/application
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1[0m  [["theme_id", 1]]
+  ↳ app/views/themes/answer.html.erb:3
+  [1m[36mReponse Load (0.3ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  [1m[36mReponse Load (0.3ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  Rendered themes/answer.html.erb within layouts/application (23.4ms)
+Completed 200 OK in 70ms (Views: 30.9ms | ActiveRecord: 12.5ms)
+
+
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 14:01:05 +0200
+Processing by ThemesController#mail as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZcCXwCIgka5huTivZkJICeHrNxE1/hqKrv+vt6HxXrZ60hR2WkLxN0LPNUCQ4/kMde2LeubhIF+e7yhGu/SYCQ==", "email"=>"sylvaindelva@hotmail.fr", "commit"=>"Save", "theme_id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 0, expected 1)):
+  
+app/controllers/themes_controller.rb:30:in `mail'
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 14:01:42 +0200
+  
+SyntaxError (/home/delva/code/Nosfusia/formulaire/app/controllers/themes_controller.rb:31: syntax error, unexpected ':', expecting keyword_then or ';' or '\n'
+    if email:.save
+             ^
+/home/delva/code/Nosfusia/formulaire/app/controllers/themes_controller.rb:32: syntax error, unexpected ')'
+    UserMailer.welcome(email:).deliver_now
+                              ^
+/home/delva/code/Nosfusia/formulaire/app/controllers/themes_controller.rb:35: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/themes_controller.rb:31: syntax error, unexpected ':', expecting keyword_then or ';' or '\n'
+app/controllers/themes_controller.rb:32: syntax error, unexpected ')'
+app/controllers/themes_controller.rb:35: syntax error, unexpected keyword_end, expecting end-of-input
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 14:02:02 +0200
+  
+SyntaxError (/home/delva/code/Nosfusia/formulaire/app/controllers/themes_controller.rb:32: syntax error, unexpected ')'
+    UserMailer.welcome(email:).deliver_now
+                              ^):
+  
+app/controllers/themes_controller.rb:32: syntax error, unexpected ')'
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 14:02:25 +0200
+Processing by ThemesController#mail as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZcCXwCIgka5huTivZkJICeHrNxE1/hqKrv+vt6HxXrZ60hR2WkLxN0LPNUCQ4/kMde2LeubhIF+e7yhGu/SYCQ==", "email"=>"sylvaindelva@hotmail.fr", "commit"=>"Save", "theme_id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (missing keyword: email):
+  
+app/controllers/themes_controller.rb:30:in `mail'
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 14:02:39 +0200
+  
+SyntaxError (/home/delva/code/Nosfusia/formulaire/app/controllers/themes_controller.rb:30: syntax error, unexpected tSYMBEG, expecting ')'
+  def mail(:email)
+            ^
+/home/delva/code/Nosfusia/formulaire/app/controllers/themes_controller.rb:35: syntax error, unexpected keyword_end, expecting end-of-input):
+  
+app/controllers/themes_controller.rb:30: syntax error, unexpected tSYMBEG, expecting ')'
+app/controllers/themes_controller.rb:35: syntax error, unexpected keyword_end, expecting end-of-input
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 14:06:20 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.3ms)
+UserMailer#welcome: processed outbound mail in 5.4ms
+Sent mail to  (1.4ms)
+Date: Tue, 04 Sep 2018 14:06:20 +0200
+From: delvasylvain@hotmail.fr
+Message-ID: <5b8e753c5dd1b_260e2ad4ec2631bc4301f@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (1.8ms)
+Completed 200 OK in 16ms (Views: 3.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fhtml" for 127.0.0.1 at 2018-09-04 14:06:20 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.3ms)
+UserMailer#welcome: processed outbound mail in 5.6ms
+Sent mail to  (1.3ms)
+Date: Tue, 04 Sep 2018 14:06:20 +0200
+From: delvasylvain@hotmail.fr
+Message-ID: <5b8e753c6dc6e_260e2ad4ec2631bc43157@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 14:06:34 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.3ms)
+UserMailer#welcome: processed outbound mail in 5.4ms
+Sent mail to  (1.2ms)
+Date: Tue, 04 Sep 2018 14:06:34 +0200
+From: delvasylvain@hotmail.fr
+Message-ID: <5b8e754a92a20_260e2ad4ec2630a4432de@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (1.6ms)
+Completed 200 OK in 16ms (Views: 2.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fhtml" for 127.0.0.1 at 2018-09-04 14:06:34 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.4ms)
+UserMailer#welcome: processed outbound mail in 15.7ms
+Sent mail to  (1.4ms)
+Date: Tue, 04 Sep 2018 14:06:34 +0200
+From: delvasylvain@hotmail.fr
+Message-ID: <5b8e754aa4fa2_260e2ad4ec2630a4433ee@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 21ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 14:06:40 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+UserMailer#welcome: processed outbound mail in 3.7ms
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `emai' for #<UserMailer:0x00007f7269181158>
+Did you mean?  email):
+  
+app/mailers/user_mailer.rb:10:in `welcome'
+test/mailers/previews/user_mailer_preview.rb:6:in `welcome'
+Started GET "/rails/mailers/user_mailer/welcome" for 127.0.0.1 at 2018-09-04 14:06:53 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.3ms)
+UserMailer#welcome: processed outbound mail in 5.0ms
+Sent mail to  (1.1ms)
+Date: Tue, 04 Sep 2018 14:06:53 +0200
+From: delvasylvain@hotmail.fr
+Message-ID: <5b8e755da6905_260e2ad4ec26324843499@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb
+  Rendered /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/railties-5.2.0/lib/rails/templates/rails/mailers/email.html.erb (1.3ms)
+Completed 200 OK in 14ms (Views: 2.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/rails/mailers/user_mailer/welcome?part=text%2Fhtml" for 127.0.0.1 at 2018-09-04 14:06:53 +0200
+Processing by Rails::MailersController#preview as HTML
+  Parameters: {"part"=>"text/html", "path"=>"user_mailer/welcome"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.7ms)
+UserMailer#welcome: processed outbound mail in 6.0ms
+Sent mail to  (1.0ms)
+Date: Tue, 04 Sep 2018 14:06:53 +0200
+From: delvasylvain@hotmail.fr
+Message-ID: <5b8e755db6976_260e2ad4ec2632484352e@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/themes/1/answer" for 127.0.0.1 at 2018-09-04 14:07:01 +0200
+Processing by ThemesController#answer as HTML
+  Parameters: {"theme_id"=>"1"}
+  [1m[36mTheme Load (1.1ms)[0m  [1m[34mSELECT  "themes".* FROM "themes" WHERE "themes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/themes_controller.rb:26
+  Rendering themes/answer.html.erb within layouts/application
+  [1m[36mQuestion Load (1.1ms)[0m  [1m[34mSELECT "questions".* FROM "questions" INNER JOIN "questionnaires" ON "questions"."id" = "questionnaires"."question_id" WHERE "questionnaires"."theme_id" = $1[0m  [["theme_id", 1]]
+  ↳ app/views/themes/answer.html.erb:3
+  [1m[36mReponse Load (0.3ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  [1m[36mReponse Load (0.3ms)[0m  [1m[34mSELECT  "reponses".* FROM "reponses" WHERE "reponses"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/themes/answer.html.erb:7
+  Rendered themes/answer.html.erb within layouts/application (29.8ms)
+Completed 200 OK in 123ms (Views: 39.6ms | ActiveRecord: 25.1ms)
+
+
+Started POST "/themes/1/mail" for 127.0.0.1 at 2018-09-04 14:07:04 +0200
+Processing by ThemesController#mail as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"C31RViV5TsQntTJwxVtg3R2Ud776Yb4/lUsvayaYlY8Ub9LgXRsuXQTDP58z+tHYiZLL1Sl+hOqlW6iaPJ1TMA==", "email"=>"sylvaindelva@hotmail.fr", "commit"=>"Save", "theme_id"=>"1"}
+  Rendering user_mailer/welcome.html.erb within layouts/mailer
+  Rendered user_mailer/welcome.html.erb within layouts/mailer (0.8ms)
+UserMailer#welcome: processed outbound mail in 24.4ms
+Sent mail to sylvaindelva@hotmail.fr (2.0ms)
+Date: Tue, 04 Sep 2018 14:07:04 +0200
+From: delvasylvain@hotmail.fr
+To: sylvaindelva@hotmail.fr
+Message-ID: <5b8e7568b7387_260e2ad4ec2630184366b@delva-Latitude-E7270.mail>
+Subject: Bonjour
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body>
+    <h1>User#welcome</h1>
+
+<p>
+  Bienvenue !
+</p>
+
+  </body>
+</html>
+
+  Rendering themes/mail.html.erb within layouts/application
+  Rendered themes/mail.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 52ms (Views: 19.2ms | ActiveRecord: 0.0ms)
+
+
