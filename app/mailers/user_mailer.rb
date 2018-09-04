@@ -6,6 +6,6 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.welcome.subject
   #
   def welcome(email)
-    mail to: email, subject: "Bonjour"
+    mail(to: email, subject: "Bonjour")
   end
 end

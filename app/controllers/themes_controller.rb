@@ -28,6 +28,6 @@ class ThemesController < ApplicationController
   end
 
   def mail
-    UserMailer.welcome(params[:email])
+    UserMailer.welcome(params[:email]).deliver_later
   end
 end
