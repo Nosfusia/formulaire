@@ -11475,3 +11475,41 @@ Processing by ThemesController#answer as HTML
 Completed 200 OK in 25ms (Views: 22.9ms | ActiveRecord: 1.0ms)
 
 
+Started GET "/themes" for 127.0.0.1 at 2018-09-04 11:28:59 +0200
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/delva/.rbenv/versions/2.4.4/lib/ruby/gems/2.4.0/gems/activerecord-5.2.0/lib/active_record/log_subscriber.rb:98
+Processing by ThemesController#index as HTML
+  Rendering themes/index.html.erb within layouts/application
+  [1m[36mTheme Load (0.5ms)[0m  [1m[34mSELECT "themes".* FROM "themes"[0m
+  ↳ app/views/themes/index.html.erb:4
+  Rendered themes/index.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 831ms (Views: 824.0ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/themes" for 127.0.0.1 at 2018-09-04 11:29:07 +0200
+Processing by ThemesController#index as HTML
+  Rendering themes/index.html.erb within layouts/application
+  [1m[36mTheme Load (0.5ms)[0m  [1m[34mSELECT "themes".* FROM "themes"[0m
+  ↳ app/views/themes/index.html.erb:4
+  Rendered themes/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 18ms (Views: 17.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/themes" for 127.0.0.1 at 2018-09-04 11:29:08 +0200
+Processing by ThemesController#index as HTML
+  Rendering themes/index.html.erb within layouts/application
+  [1m[36mTheme Load (0.4ms)[0m  [1m[34mSELECT "themes".* FROM "themes"[0m
+  ↳ app/views/themes/index.html.erb:4
+  Rendered themes/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/themes" for 127.0.0.1 at 2018-09-04 11:29:09 +0200
+Processing by ThemesController#index as HTML
+  Rendering themes/index.html.erb within layouts/application
+  [1m[36mTheme Load (0.3ms)[0m  [1m[34mSELECT "themes".* FROM "themes"[0m
+  ↳ app/views/themes/index.html.erb:4
+  Rendered themes/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 21ms (Views: 19.5ms | ActiveRecord: 0.3ms)
+
+
