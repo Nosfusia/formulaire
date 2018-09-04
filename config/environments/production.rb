@@ -66,7 +66,11 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "formulaire_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
       :email => ENV['SENDGRID_EMAIL'],
       :domain => 'https://formulaire-116.herokuapp.com',
       :address => 'smtp.sendgrid.net',
