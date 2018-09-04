@@ -1,0 +1,5 @@
+<h1> <%= @theme.name %> </h2>
+
+<ul>
+  <li> <%= link_to "Commencer le test", question_path(theme_id: @theme.id, id: @theme.questions.first.id) %> </li>
+</ul>

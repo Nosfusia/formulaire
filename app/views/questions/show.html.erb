@@ -1,0 +1,11 @@
+
+<h1><%= @question.name %> </h1>
+
+<%= form_tag(questions_path) do %>
+  <% @question.reponses.each do |reponse| %>
+      <%= hidden_field_tag :question_id, @question.id %>
+      <%= hidden_field_tag :theme_id, @theme %>
+      <%= button_tag reponse.name, name: 'reponse', value: reponse.id, type: :submit, class: 'btn' %>
+  <% end %>
+<% end %>
+
