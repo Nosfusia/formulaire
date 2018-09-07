@@ -23,8 +23,24 @@ class ThemesController < ApplicationController
   end
 
   def answer
-    @theme = Theme.find(params[:theme_id])
-    @question = @theme.questions
+    # @theme = Theme.find(params[:theme_id])
+    # @question = @theme.questions
+    @themes = Theme.all
+    gon.themes = Theme.pluck(:name)
+
+    @values = []
+    @themes.each do |theme|
+      valeur_theme = 0
+      theme.questions.each do |question|
+        reponse_valeur = Reponse.find(question.reponse_id).valeur
+        if reponse_valeur.present?
+          valeur_theme = valeur_theme + reponse_valeur
+        end
+      end
+      @values << valeur_theme
+    end
+    gon.values = @values
+    puts(@values).inspect
   end
 
   def mail

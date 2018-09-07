@@ -18,6 +18,8 @@ gem 'webpacker'
 gem 'sendgrid-ruby'
 gem 'figaro'
 gem 'sendgrid'
+gem 'chart-js-rails'
+gem 'gon'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
