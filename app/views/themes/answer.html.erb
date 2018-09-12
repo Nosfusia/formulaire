@@ -1,3 +1,5 @@
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+<%= wicked_pdf_javascript_include_tag "chartkick" %>
 
 <% @themes.each do |theme| %>
   <% theme.questions.each do |question| %>
@@ -11,10 +13,9 @@
   <% end %>
 <% end %>
 
-
-
-
-<canvas id="myChart" height="70"></canvas>
+<div style="width:800px;height:200;">
+    <canvas id="myChart" style="width:800px;height:200;"></canvas>
+</div>
 
 <h2> Recevoir ces informations par mail ? </h2>
 
@@ -27,3 +28,6 @@
 <!--
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
  -->
+<p> <%= link_to "pdf", theme_answer_path(:theme_id, format: "pdf") %> </p>
+
+<%= @phrase %>

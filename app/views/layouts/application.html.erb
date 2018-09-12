@@ -8,11 +8,14 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= Gon::Base.render_data %>
+    <%= wicked_pdf_javascript_include_tag 'radar.js' %>
+    <%= wicked_pdf_javascript_include_tag 'Chart' %>
+    <%= wicked_pdf_stylesheet_link_tag %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
+    <%= javascript_include_tag wicked_pdf_asset_base64 'application' %>
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>
