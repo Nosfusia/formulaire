@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
       elsif next_theme.present?
         redirect_to question_path(id: next_theme.questions.first.id, theme_id: next_theme)
       else
-        redirect_to theme_answer_path(:theme_id)
+        redirect_to answer_themes_path
       end
     end
   end
