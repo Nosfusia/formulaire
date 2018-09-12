@@ -1,19 +1,33 @@
-<h1> <%= @theme.name %> </h1>
+<%= javascript_include_tag "https://www.google.com/jsapi" %>
+<%= wicked_pdf_javascript_include_tag "chartkick" %>
 
-<% @theme.questions.each do |question| %>
-<ul>
-  <li>
-    <%= question.name %><br/>
-    <%= Reponse.find_by_id(question.reponse_id).name %>
-  </li>
-</ul>
+<% @themes.each do |theme| %>
+  <% theme.questions.each do |question| %>
+    <ul>
+      <li>
+        <%= question.name %><br/>
+        <%= Reponse.find_by_id(question.reponse_id).name %>
+        <%= Reponse.find_by_id(question.reponse_id).valeur %>
+      </li>
+    </ul>
+  <% end %>
 <% end %>
+
+<div style="width:800px;height:200;">
+    <canvas id="myChart" style="width:800px;height:200;"></canvas>
+</div>
 
 <h2> Recevoir ces informations par mail ? </h2>
 
 <%= form_tag(theme_mail_path) do %>
 <!--   First name: <%= text_field_tag :first_name %><br />
   Last name : <%= text_field_tag :last_name %><br /> -->
-  Email : <%= text_field_tag :email %><br />
+  Email : <%= text_field_tag :email %>
   <%= submit_tag "Save" %>
 <% end %>
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+ -->
+<p> <%= link_to "pdf", theme_answer_path(:theme_id, format: "pdf") %> </p>
+
+<%= @phrase %>

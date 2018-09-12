@@ -18,6 +18,16 @@ gem 'webpacker'
 gem 'sendgrid-ruby'
 gem 'figaro'
 gem 'sendgrid'
+gem 'chartjs-ror', '~> 2.2'
+gem 'chart-js-rails'
+
+gem 'gon'
+gem 'prawn'
+
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary-edge', '~> 0.12.2.1'
+
+
 
 group :development do
   gem 'web-console', '>= 3.3.0'
