@@ -46,6 +46,8 @@ class ThemesController < ApplicationController
     phrases = [{name: "Gateaux", value:"merde"}]
     @phrase = phrases.find{|x| x[:name] == theme_max[:name]}[:value]
 
+
+
     gon.values = @values
     puts(@values).inspect
 

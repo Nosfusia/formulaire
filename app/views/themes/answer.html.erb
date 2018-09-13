@@ -1,18 +1,3 @@
-<%= javascript_include_tag "https://www.google.com/jsapi" %>
-<%= wicked_pdf_javascript_include_tag "chartkick" %>
-
-<% @themes.each do |theme| %>
-  <% theme.questions.each do |question| %>
-    <ul>
-      <li>
-        <%= question.name %><br/>
-        <%= Reponse.find_by_id(question.reponse_id).name %>
-        <%= Reponse.find_by_id(question.reponse_id).valeur %>
-      </li>
-    </ul>
-  <% end %>
-<% end %>
-
 <div style="width:800px;height:200;">
     <canvas id="myChart" style="width:800px;height:200;"></canvas>
 </div>
