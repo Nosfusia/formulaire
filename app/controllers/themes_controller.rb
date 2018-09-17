@@ -43,7 +43,7 @@ class ThemesController < ApplicationController
     end
 
     theme_max = @theme_points.sort_by{|x| x[:value]}.first
-    phrases = [{name: "Gateaux", value:"merde"}]
+    phrases = [{name: "Gateaux", value:"Il faudra songer a manger moins de gateaux ! "}]
     @phrase = phrases.find{|x| x[:name] == theme_max[:name]}[:value]
 
 
@@ -63,14 +63,16 @@ class ThemesController < ApplicationController
     respond_to do |format|
     format.html
     format.pdf do
-      render  :pdf => 'answer.html.erb',
-              :template => 'themes/answer.html.erb',
-              :layout => "application.html.erb",
-              :page_size => "A4",
-              javascript_delay: 1000, # The relevant line is this one
-              options: {
-              responsive: false
-              }
+      render  :pdf => 'themes/answer.html.erb',
+              :template => 'themes/answer.html.erb'
+              # :layout => "application.html.erb",
+              # 'enable-javascript' => true,
+              # # :page_size => "A4",
+              # # javascript_delay: 1000, # The relevant line is this one
+              # disable_javascript: false,
+              # options: {
+              # responsive: false
+              # }
       end
     end
   end

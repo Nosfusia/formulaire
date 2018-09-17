@@ -7,6 +7,5 @@ class AnswerPdf < Prawn::Document
 
   def to_pdf
     text "hey"
-
   end
 end

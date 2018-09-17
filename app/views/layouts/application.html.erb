@@ -4,17 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>TODO</title>
+    <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js" %>
+    <%= javascript_include_tag "http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" %>
+
+    <%= wicked_pdf_stylesheet_link_tag "application", :media =>"all" %>
+    <%= wicked_pdf_javascript_include_tag "packs/radar.js" %>
+
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= Gon::Base.render_data %>
-    <%= wicked_pdf_javascript_include_tag 'application.js' %>
-    <%= wicked_pdf_stylesheet_link_tag %>
+
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
   <body>
     <%= yield %>
-    <%= javascript_include_tag wicked_pdf_asset_base64 'application' %>
     <%= javascript_pack_tag 'application' %>
+<!--     <script type="text/javascript" src="file://#{Rails.root.join('radar.js')}"></script> -->
   </body>
 </html>
